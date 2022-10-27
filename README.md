@@ -2,7 +2,7 @@
 A project that utilizes deepface and deep learning techniques to recognize human faces to facilitate attendance records.
 
 
-
+## Set up Database server
 Step to Set Up XAMPP for MariaDB database. MariaDB is very similar to MySQL but they are not the same. 
 
 Step 1: Download XAMPP https://www.apachefriends.org/index.html
@@ -56,5 +56,6 @@ INSERT INTO admin(username , password) values ('admin3', 'admin789');
 
 INSERT INTO employee(user_id , user_name, user_ic) values ('1', 'GAN JOO HAN', '001207040021');
 ```
+***   
 
 ![image](https://user-images.githubusercontent.com/57710546/198226559-d20b3264-520d-4a0f-a08d-b1710d966096.png)
