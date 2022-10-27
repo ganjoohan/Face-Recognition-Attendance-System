@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">   
+<head>   
+<meta charset="utf-8">   
+<title>CSC Face Attendance System</title>   
+<meta name="description" content="Bootstrap.">  
+
+<link rel="icon" href="https://www.cscmalaysia.com/favicon.ico">
+<link href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css" rel="stylesheet">   
+<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+
+ 
+
+</head>  
+<body style="margin:20px auto">  
+<div class="container">
+<div class="row header" style="text-align:center; margin-left: 10%; margin-right: 10%;">
+
+<style>
+table.table_1{
+    margin-left: auto;
+    margin-right: auto; 
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.dataTables_wrapper .dt-button{
+    float:left;
+    margin: 0 10px 5px 0px;
+    text-align: left;
+}
+
+table.table_1 thead{
+  margin-left: 30px;
+}
+
+table.table_1 tr, td{
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+table.table_1 th.sorting{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #020c36;
+    color: #f2f2f2;
+}
+table.table_1 th.sorting_disabled{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #020c36;
+    color: #f2f2f2;
+}
+
+table.table_1 tr:nth-child(even){background-color: #f2f2f2;}
+
+table.table_1 tr:hover {background-color: #f7deeb;}
+
+table.table_1 td#alignLeft{
+  text-align: left;
+}
+
+.button-18 {
+  align-items: center;
+  background-color: #0A66C2;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+}
+
+.button-18:hover,
+.button-18:focus { 
+  background-color: #16437E;
+  color: #ffffff;
+}
+
+.button-18:active {
+  background: #09223b;
+  color: rgb(255, 255, 255, .7);
+}
+
+</style>
+<body>
+  <a href="{{url_for('logout')}}" class="button-18" style="float: right;text-decoration:none;" role="button">Logout</a>
+  <br>
+
+  <h2 style="color: #020c36;font: 2.5rem/1.0 Tahoma, sans-serif;letter-spacing: 0;margin-bottom: 0px; margin-top:3%;text-align:center">Welcome, {{username}}!</h2>
+
+  <h2 style="color: #020c36;font: 3.2rem/1.10 Tahoma, sans-serif;letter-spacing: 0;margin-bottom: 10px; text-align:center">CSC Face Attendance System</h2>
+  <br>
+  <form action="/home/submit" method='post'>
+    <label for="user_id">Employee OID:</label><br>
+    <input type="text" id="user_id" name="user_id" value=""><br><br>
+    <input name="two_buttons" value="Query" type="submit" >
+    <input name="two_buttons" value="Show All Attendances" type="submit" style="margin-left:5px">
+    <input name="two_buttons" value="Show All Employees" type="submit" style="margin-left:5px">
+  </form> 
+  
+  <br>
+  <p>Click the "Query" button to search for the attendance of Employee.</p>
+  <br>
+
+  <table border="0" cellspacing="5" cellpadding="5">
+    <tbody><tr>
+        <td>From:</td>
+        <td><input type="text" id="min" name="min"></td>
+    </tr>
+    <tr>
+        <td>To:</td>
+        <td><input type="text" id="max" name="max"></td>
+    </tr>
+  </tbody></table>
+
+  <br>
+
+  {% if queryType == 2 %}
+  <table id="myTable2" class="table_1">
+    <thead>
+      <tr>
+        <th width="25px">No.</th>
+        <th width="30px">OID</th>
+        <th width="300px">Name</th>
+        <th width="80px">IC</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in data %}
+      <tr>
+        <td width="25px">{{loop.index0+1}}</td>
+        <td width="30px">{{row[0]}}</td>
+        <td id="alignLeft" width="300px">{{row[1]}}</td>
+        <td width="80px">{{row[2]}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <table id="myTable" class="table_1">
+    <thead>
+      <tr>
+        <th width="25px">No.</th>
+        <th width="30px">OID</th>
+        <th width="300px">Name</th>
+        <th width="80px">Date</th>
+        <th width="80px">Time In</th>
+        <th width="40px">Machine No.</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in data %}
+      <tr>
+        <td width="25px">{{loop.index0+1}}</td>
+        <td width="30px">{{row[0]}}</td>
+        <td id="alignLeft" width="300px">{{row[1]}}</td>
+        <td width="80px">{{row[2].strftime('%Y-%m-%d')}}</td>
+        <td width="80px">{{row[2].strftime('%H%M')}}</td>
+        <td width="40px">{{row[3]}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+
+
+</body>
+
+
+<script>
+var minDate, maxDate;
+ 
+// Custom filtering function which will search data in column four between two values
+$.fn.dataTable.ext.search.push(
+    function( settings, data, dataIndex ) {
+        var min = minDate.val();
+        var max = maxDate.val();
+        var date = new Date( data[3] );
+ 
+        if (
+            ( min === null && max === null ) ||
+            ( min === null && date <= max ) ||
+            ( min <= date && max === null ) ||
+            ( min <= date && date <= max )
+        ) {
+            return true;
+        }
+        return false;
+    }
+);
+
+$(document).ready(function(){
+    // Create date inputs
+    minDate = new DateTime($('#min'), {
+        format: 'YYYY-MM-DD'
+    });
+    maxDate = new DateTime($('#max'), {
+        format: 'YYYY-MM-DD'
+    });
+    
+    // DataTables initialisation
+    var table = $('#myTable').DataTable({
+      dom: 'Blfrtip',
+      buttons: [{extend:'csv', text:'Export to CSV'}],
+      aLengthMenu: [
+        [10, 25, 50, 100, -1],
+        [10, 25, 50, 100, "All"]
+      ],
+      iDisplayLength: 10,
+      "columnDefs": [
+        { "orderable": false, "targets": [4, 5] },
+        { "orderable": true, "targets": [0, 1, 2, 3] }
+      ],
+    });
+    
+    table.buttons().container().appendTo('#myTable_wrapper .col-md-6:eq(0)')
+
+    // Refilter the table
+    $('#min, #max').on('change', function(){
+        table.draw();
+    });
+
+});
+
+$(document).ready(function() {
+    
+    // DataTables initialisation
+    var table = $('#myTable2').DataTable({
+      dom: 'Blfrtip',
+      buttons: [{extend:'csv', text:'Export to CSV'}],
+      aLengthMenu: [
+        [10, 25, 50, 100, -1],
+        [10, 25, 50, 100, "All"]
+      ],
+      iDisplayLength: 10,
+      "columnDefs": [
+        { "orderable": false, "targets": [3] },
+        { "orderable": true, "targets": [0, 1, 2] }
+      ],
+    });
+    
+    table.buttons().container().appendTo('#myTable_wrapper .col-md-6:eq(0)')
+
+});
+</script>
+</html>
