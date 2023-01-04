@@ -99,7 +99,28 @@ class regWindow(QDialog):
 
             global_ini.mydb.commit()
 
-            # r = request.put()
+            # Webhook
+            try:
+                sql = "SELECT url, status, event FROM webhook_table"
+                try:
+                    global_ini.mycursor.execute(sql,)
+                except Exception as e:
+                    QMessageBox.critical(None, "Error", str(repr(e)))
+                    return
+
+                webhook_output = global_ini.mycursor.fetchall()
+
+                for row in webhook_output:
+                    if row[1]=="Enabled" and row[2]=="Registration":
+
+                        try:
+                            data = {'Event':row[2], 'OID':user_id, 'Name':user_name, "IC":user_ic}
+                            r = requests.post(row[0], data=json.dumps(data), headers={'Content-Type':'application/json'})
+                        except:
+                            pass
+
+            except Exception as e:
+                print(e)
 
             self.messlabel.setText("Please process to capture image...")
             self.RegButton.setEnabled(False)

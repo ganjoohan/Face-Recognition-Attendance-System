@@ -1,7 +1,7 @@
 import os
 os.chdir(os.path.abspath(os.getcwd()))
 
-from flask import Flask, request, session, redirect, url_for, render_template, send_file, jsonify
+from flask import Flask, request, session, redirect, url_for, render_template, send_file, jsonify, send_from_directory
 from flask_mysqldb import MySQL
 import json
 import io
@@ -30,6 +30,25 @@ mysql = MySQL(app)
 
 app.config['SERVER_PATH'] = os.getcwd()
 app.config['SERVER_DATASETS'] = "datasets"
+app.config['IMAGE_FOLDER'] = "image"
+app.config['TEMPLATE_FOLDER'] = "template"
+
+
+@app.route('/css/<path:filename>')
+def send_css(filename):
+  # Send the CSS file from the image folder
+  return send_from_directory(app.config['TEMPLATE_FOLDER'], filename, mimetype='text/css')
+
+@app.route('/html/<path:filename>')
+def send_html(filename):
+  # Send the HTML file from the image folder
+  return send_from_directory(app.config['TEMPLATE_FOLDER'], filename)
+
+@app.route('/png/<path:filename>')
+def send_png(filename):
+  # Send the PNG file from the image folder
+  return send_from_directory(app.config['IMAGE_FOLDER'], filename, mimetype='image/png')
+
 
 
 @app.route('/api/connect', methods=['GET'])
@@ -128,6 +147,12 @@ def delete():
 
 #https://hevodata.com/learn/flask-mysql/
 
+
+# ===================================== Webhook ========================================
+# @app.route('')
+
+
+
 # ====================================== API ============================================
 class create_dict(dict): 
 
@@ -135,7 +160,7 @@ class create_dict(dict):
     def __init__(self): 
         self = dict() 
         
-    # Function to add key:value 
+    # Function to add key:value eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
     def add(self, key, value): 
         self[key] = value
 
@@ -357,6 +382,65 @@ def logout():
 @app.route('/home')
 def home():
     return render_template('home.html', username=session['username'])
+
+@app.route('/webhook')
+def webhook():
+    cursor = mysql.connection.cursor()
+    cursor.execute("SELECT * FROM webhook_table", )
+    output = cursor.fetchall()
+    cursor.close()
+    return render_template('webhook.html', username=session['username'], data = output)
+
+# route http posts to this methods
+@app.route('/webhook/addRow', methods=['POST'])
+def webhook_add():
+    
+    url = request.json['url']
+    status = request.json['status']
+    event = request.json['event']
+    created = request.json['created']
+    updated = request.json['updated']
+
+    cursor = mysql.connection.cursor()
+
+    try:
+        sql = "INSERT INTO webhook_table (url, status, event, created, updated) VALUES (%s, %s, %s, %s, %s)"
+        val = (url, status, event, created, updated)
+        cursor.execute(sql, val)
+
+        # Commit the transaction
+        cursor.execute("COMMIT")
+
+        cursor.close()
+        result_dict = {'Message': 'Data added', 'Success':True}
+        return result_dict
+
+    except:
+        result_dict = {'Message': 'Duplicate entry', 'Success':False}
+        return result_dict
+
+@app.route('/webhook/deleteRow', methods=['POST'])
+def webhook_delete():
+    
+    url = request.json['url']
+
+    cursor = mysql.connection.cursor()
+
+    try:
+        sql = "DELETE FROM webhook_table WHERE url = %s"
+        val = (url, )
+        cursor.execute(sql, val)
+
+        # Commit the transaction
+        cursor.execute("COMMIT")
+
+        cursor.close()
+        result_dict = {'Message': 'Delete successfully', 'Success':True}
+        return result_dict
+
+    except:
+        result_dict = {'Message': 'Failed delete', 'Success':False}
+        return result_dict
 
 ### Result checker html page 
 @app.route('/home/submit', methods=['POST', 'GET'])

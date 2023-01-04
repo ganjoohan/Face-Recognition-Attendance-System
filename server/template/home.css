@@ -1,0 +1,144 @@
+table.table_1{
+    margin-left: auto;
+    margin-right: auto; 
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.dataTables_wrapper .dt-button{
+    float:left;
+    margin: 0 10px 5px 0px;
+    text-align: left;
+}
+
+table.table_1 thead{
+  margin-left: 30px;
+}
+
+table.table_1 tr, td{
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+table.table_1 th.sorting{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #020c36;
+    color: #f2f2f2;
+}
+table.table_1 th.sorting_disabled{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #020c36;
+    color: #f2f2f2;
+}
+
+table.table_1 tr:nth-child(even){background-color: #f2f2f2;}
+
+table.table_1 tr:hover {background-color: #f7deeb;}
+
+table.table_1 td#alignLeft{
+  text-align: left;
+}
+
+.button-18 {
+  align-items: center;
+  background-color: #0A66C2;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+}
+
+.button-18:hover,
+.button-18:focus { 
+  background-color: #16437E;
+  color: #ffffff;
+}
+
+.button-18:active {
+  background: #09223b;
+  color: rgb(255, 255, 255, .7);
+}
+
+.bg-image {
+  /* Set a specific height */
+  height: 400px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /* Create the overlay */
+  position: relative;
+  
+}
+
+.bg-image::before {
+  /* Set the overlay to fill the entire element */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  /* Set a transparent black background color */
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Set the text color and positioning */
+/* Set the text to be displayed on a single line and hide any text that extends beyond the width of the element */
+.bg-text {
+  color: white;
+  font-size: 55px;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.footer-bottom{
+  margin-top: 30px;
+  background: #0093d0;
+  width: 100%;
+  height: 50px;
+  /* padding: 10px 0; */
+  text-align: center;
+}
+.footer-bottom p{
+  font-size: 15px;
+  padding-top: 15px;
+  word-spacing: 2px;
+  /* text-transform: capitalize; */
+  color:#F5E5E0 ;
+}

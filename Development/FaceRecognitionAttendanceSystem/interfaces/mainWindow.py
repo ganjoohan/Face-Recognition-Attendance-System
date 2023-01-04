@@ -5,6 +5,8 @@ import os
 if os.name=='nt':
     import winsound
 
+import requests
+import json
 import sys
 import cv2
 import pandas as pd
@@ -420,6 +422,30 @@ class mainWindow(QDialog):
                                             thread = Thread(target = playEffect, args = (sound_counter,verified))
                                             thread.start()
                                             # continue
+
+                                            # Webhook
+                                            try:
+                                                sql = "SELECT url, status, event FROM webhook_table"
+                                                try:
+                                                    global_ini.mycursor.execute(sql,)
+                                                except Exception as e:
+                                                    QMessageBox.critical(None, "Error", str(repr(e)))
+                                                    return
+
+                                                webhook_output = global_ini.mycursor.fetchall()
+
+                                                for row in webhook_output:
+                                                    if row[1]=="Enabled" and row[2]=="Attendance":
+
+                                                        try:
+                                                            data = {'Event':row[2], 'OID':userid, 'Name':label, "Attendance":dateStr, "Machine No.":global_ini.machine_code}
+                                                            r = requests.post(row[0], data=json.dumps(data), headers={'Content-Type':'application/json'})
+                                                        except:
+                                                            pass
+
+                                            except Exception as e:
+                                                print(e)
+                                                
                                         
                                         else:
                                             self.messagelabel.setText("Your attendance has been recorded. ")

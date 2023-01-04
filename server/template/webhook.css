@@ -1,0 +1,234 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+th, td {
+
+max-width: 200px;
+overflow: hidden;
+text-overflow: ellipsis;
+border: 1px solid #dddddd;
+text-align: left;
+padding: 8px;
+white-space: nowrap;
+
+}
+
+abbr[title] {
+text-decoration: none;
+cursor: text;    
+
+}
+
+tr:nth-child(odd){background-color: #ffffff}
+tr:nth-child(even){background-color: #ffffff}
+
+th {
+background-color: #4CAF50;
+color: white;
+white-space: nowrap;
+min-width: 75px;
+max-width: 330px;
+}
+  
+
+div{
+display: block;
+}
+
+
+.webhook {
+padding-left: 30px;
+padding-right: 30px;
+padding-top: 33px;
+padding-bottom: 24px;
+width: 100%;
+height: fit-content;
+display: flex;
+background-color: rgb(245,246,250);
+}
+
+.webhook_left {
+width: 75%;
+/* background-color: lightblue; */
+overflow: hidden;
+text-overflow: ellipsis;
+}
+
+.webhook_right {
+text-align: center;
+padding-top: 15px;
+/* padding-left: 100px; */
+width: 25%;
+/* background-color: lightgreen; */
+}
+
+.button_1{
+--color: #fff;
+background: rgb(35, 164, 85);
+box-shadow: rgb(220 240 228) 5px 5px 25px 0px;
+color: var(--color);
+padding: 0.5rem 1.5rem;
+border-radius: 5px;
+cursor: pointer;
+border-width: 0px;
+border-color: transparent;
+border-style: none;
+font-size: 15px;
+transition: box-shadow 0.3s ease 0s;
+min-width: 100px;
+width: auto;
+height: 40px;
+display: inline-flex;
+-webkit-box-pack: center;
+justify-content: center;
+-webkit-box-align: center;
+align-items: center;
+}
+
+.form-popup {
+display: none;
+position: fixed;
+top: 25%;
+left: 25%;
+width: 50%;
+height: 50%;
+z-index: 9;
+padding: 16px;
+border-radius: 5px;
+background-color: #f7f7f7;
+padding: 20px;
+box-shadow: 0px 2px 35px #ccc;
+border: 1px solid #ccc;
+border-radius: 10px;
+
+/* border: 1px solid rgba(0, 0, 0, 0.171); */
+/* background-color: rgba(0, 0, 0, 0.5); */
+}
+
+.button_icon {
+background-color: rgb(221, 221, 221);
+border: none;
+display: inline;
+width: 32px;
+height: 32px;
+background: rgb(245, 246, 250);
+border: 1px solid rgb(231, 231, 231);
+box-sizing: border-box;
+border-radius: 5px;
+padding: 0px;
+}
+
+button.close-button {
+background-color: transparent;
+border: none;
+position: absolute; 
+top: 0; 
+right: 0;
+width: 30px;
+height: 30px;
+}
+
+button.close-button:active {
+    border: none;
+    background-color: transparent;
+}
+
+button.close-button:focus {
+    border: none;
+    background-color: transparent;
+}
+
+.dim {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+select {
+    width: 80%;
+    padding: 5px 5px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #ffffff;
+    /* border-color: #8f8f8f; */
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    /* display: flex; */
+}
+
+.form {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    height: fit-content;
+    display: inline-flex;
+    background-color: rgb(245,246,250);
+}
+
+.form_left {
+    width: 30%;
+    box-sizing:border-box;
+}
+    
+.form_right {
+    width: 70%;
+    display: inline-block;
+}
+    
+
+input[type=submit], input[type=reset] {
+    width: 15%;
+    background-color: #712cf9;
+    color: white;
+    padding: 6px 6px;
+    /* margin: 10px 0; */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    resize: vertical;
+}
+
+input[type=submit]:hover, input[type=reset]:hover {
+    background-color: #7b3df7;
+}
+
+input[type=url] {
+    width: 80%;
+    padding: 5px 5px;
+    margin: 0 0;
+    box-sizing: border-box;
+    border: 1px solid #555;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=url]:focus {
+    border: 3px solid #555; 
+}
+
+.footer-bottom{
+    margin-top: 30px;
+    position: fixed;
+    bottom: 0;
+    background: #0093d0;
+    width: 100%;
+    height: 50px;
+    /* padding: 10px 0; */
+    text-align: center;
+}
+
+.footer-bottom p{
+    font-size: 15px;
+    padding-top: 15px;
+    word-spacing: 2px;
+    /* text-transform: capitalize; */
+    color:#F5E5E0 ;
+}
+
+#footer {
+    height: 50px;
+    clear: both;
+}
+

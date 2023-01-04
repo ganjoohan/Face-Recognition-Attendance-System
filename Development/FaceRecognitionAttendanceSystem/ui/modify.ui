@@ -405,7 +405,7 @@ color:rgba(255, 255, 255, 180);
     <pixmap>../images/mainBackground.png</pixmap>
    </property>
    <property name="scaledContents">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
