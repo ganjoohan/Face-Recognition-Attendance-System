@@ -2,9 +2,10 @@
 A project that utilizes deepface and deep learning techniques to recognize human faces to facilitate attendance records.
 
 ## Demo
+<a href="https://youtu.be/PIPWR7Ub3TQ">
+  <img src="https://img.youtube.com/vi/PIPWR7Ub3TQ/hqdefault.jpg" alt="Rick Astley - Never Gonna Give You Up music video" />
+</a>
 
-[![Alt text](![image](https://user-images.githubusercontent.com/57710546/211238371-1e9378e5-4a6b-4d96-91c2-176f4fbfac63.png)
-)](https://youtu.be/PIPWR7Ub3TQ){:height="720" width="1280"}
 
 
 ## Set up Database server
