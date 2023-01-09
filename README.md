@@ -3,7 +3,7 @@ A project that utilizes deepface and deep learning techniques to recognize human
 
 ## Demo
 
-https://youtu.be/PIPWR7Ub3TQ
+<iframe width="560" height="315" src="https://youtu.be/PIPWR7Ub3TQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## Set up Database server
