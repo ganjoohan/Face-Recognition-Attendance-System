@@ -1,6 +1,10 @@
 # Face-Recognition-Attendance-System
 A project that utilizes deepface and deep learning techniques to recognize human faces to facilitate attendance records.
 
+## Demo
+
+https://youtu.be/PIPWR7Ub3TQ
+
 
 ## Set up Database server
 Step to Set Up XAMPP for MariaDB database. MariaDB is very similar to MySQL but they are not the same. 
