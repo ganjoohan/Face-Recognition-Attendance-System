@@ -1,12 +1,58 @@
 # Face-Recognition-Attendance-System
 A project that utilizes deepface and deep learning techniques to recognize human faces to facilitate attendance records.
 
-## Demo
+## Demo - Youtube Video
+Link to video: https://youtu.be/PIPWR7Ub3TQ  
 <a href="https://youtu.be/PIPWR7Ub3TQ">
   <img src="https://img.youtube.com/vi/PIPWR7Ub3TQ/hqdefault.jpg" alt="Rick Astley - Never Gonna Give You Up music video" />
 </a>
 
 
+
+
+## Some Screencaps
+
+
+![image](https://user-images.githubusercontent.com/57710546/211441183-2f326942-f83c-49ca-b576-c2a5f30d35bd.png)  
+*Figure 1: Main Screen*   
+&nbsp;
+  
+![image](https://user-images.githubusercontent.com/57710546/211441445-bf40ed95-370f-47f8-a5e2-1ed8906e3319.png)  
+*Figure 2: Face Recognition record attendance Screen*   
+&nbsp;
+
+![image](https://user-images.githubusercontent.com/57710546/211441206-a67428a4-a457-4b3c-89e3-e2a983761e94.png)   
+*Figure 3: Admin Login Screen*     
+&nbsp;
+
+![image](https://user-images.githubusercontent.com/57710546/211441240-f5723031-754d-46d2-acde-ea411c635505.png)   
+*Figure 4: Admin Screen*  
+&nbsp;
+
+![image](https://user-images.githubusercontent.com/57710546/211441373-a7584585-6a12-45a0-9663-86a69d723493.png)  
+*Figure 5: Registration Screen*  
+&nbsp;
+
+![image](https://user-images.githubusercontent.com/57710546/211441152-3d223547-09bd-466b-8a21-5927c0f84701.png)   
+*Figure 6: Logging feature of Recognition Error in Excel file*   
+&nbsp;
+
+#### Webpage
+![image](https://user-images.githubusercontent.com/57710546/211443272-ffa3ff9e-2076-407e-b01b-ef79fe3fc81c.png)
+*Figure 7: Web App Login Screen*  
+&nbsp;
+
+![image](https://user-images.githubusercontent.com/57710546/211443425-148a1f8e-aaa1-47c9-b6ff-521afc60a198.png)
+*Figure 8: Web App Home Screen*  
+&nbsp;
+
+![image](https://user-images.githubusercontent.com/57710546/211443531-ee8eda89-1938-4d7f-a32c-608312fb0148.png)
+*Figure 9: Query Attendance from Web App*  
+&nbsp;
+
+![image](https://user-images.githubusercontent.com/57710546/211443611-bdcafa67-3bcb-49f0-81c3-eb82939ef89a.png)
+*Figure 10: Webhook feature*  
+&nbsp;
 
 ## Set up Database server
 Step to Set Up XAMPP for MariaDB database. MariaDB is very similar to MySQL but they are not the same. 
