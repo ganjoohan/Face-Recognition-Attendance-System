@@ -54,6 +54,10 @@ Link to video: https://youtu.be/PIPWR7Ub3TQ
 *Figure 10: Webhook feature*  
 &nbsp;
 
+![image](https://user-images.githubusercontent.com/57710546/211443771-6a28e685-9164-4a5a-bae8-65b1a0ab6601.png)
+*Figure 11: Hosting Server by Flask*
+&nbsp;
+
 ## Set up Database server
 Step to Set Up XAMPP for MariaDB database. MariaDB is very similar to MySQL but they are not the same. 
 
